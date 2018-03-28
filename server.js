@@ -7,6 +7,10 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname+'/wm.html');
 });
 
+app.get('/2', function (req, res) {
+  res.sendFile(__dirname+'/wm2.html');
+});
+
 app.get('/world-110m.json', function (req, res) {
   res.sendFile(__dirname+'/world-110m.json');
 });
