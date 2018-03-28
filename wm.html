@@ -16,6 +16,7 @@ h1 {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
 <script>
 
 var width = 960,
@@ -26,6 +27,20 @@ var projection = d3.geo.orthographic()
     .scale(width / 2 - 20)
     .clipAngle(90)
     .precision(0.6);
+
+/*var projection =d3.geo.interrupt(d3.geo.sinuMollweide.raw)
+    .lobes([[ // northern hemisphere
+      [[-180,  35], [ -30,  90], [   0,  35]],
+      [[   0,  35], [  30,  90], [ 180,  35]]
+    ], [ // southern hemisphere
+      [[-180, -10], [-102, -90], [ -65, -10]],
+      [[ -65, -10], [   5, -90], [  77, -10]],
+      [[  77, -10], [ 103, -90], [ 180, -10]]
+    ]])
+    .rotate([-20, -55])
+    .scale(165)
+    .translate([width / 2, height / 2 - 16])
+    .precision(.1);*/
 
 var canvas = d3.select("body").append("canvas")
     .attr("width", width)
@@ -75,9 +90,9 @@ function ready(error, world, names) {
             projection.rotate(r(t));
             c.clearRect(0, 0, width, height);
             c.fillStyle = "#ccc", c.beginPath(), path(land), c.fill();
-            c.fillStyle = "#f00", c.beginPath(), path(countries[i]), c.fill();
+            c.fillStyle = "#E20074", c.beginPath(), path(countries[i]), c.fill();
             c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path(borders), c.stroke();
-            c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path(globe), c.stroke();
+            c.strokeStyle = "#E20074", c.lineWidth = 2, c.beginPath(), path(globe), c.stroke();
           };
         })
       .transition()
